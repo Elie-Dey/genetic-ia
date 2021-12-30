@@ -77,30 +77,30 @@ public class Main {
         fen.getContentPane().setBackground(Color.BLACK);
         //fen.setTitle("Algorithme génétique");
         fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fen.setVisible(true);
+        //fen.setVisible(true);
 
         long startTime = System.currentTimeMillis();
         Population p = new Population(nombreIndividus);
         double a =  p.getPopulation().get(0).performance();
-        System.out.println("Population initiale  fit: " + a);
+        System.out.println("Population initiale meilleur fitness : " + a);
         System.out.println("Running....");
         int i = 0;
         while ((System.currentTimeMillis() - startTime) / 1000 < 50) {
             i++;
             p = p.reproduire();
             panneau.recupMeilleurIndiv(p);
-            System.out.println("Génération " + i + " : " + p.getPopulation().get(0).performance());
+            //System.out.println("Génération " + i + " : " + p.getPopulation().get(0).performance());
             // Thread.sleep(1000);
             longueur.setText(" Longueur du chemin : " + String.format("%.4f", p.getPopulation().get(0).performance())
                     + "          ");
             temps.setText("Fonctionne depuis " + (System.currentTimeMillis() - startTime) / 1000 + " secondes");
         }
 
-        System.out.println("Population initiale  fit: " + a);
-        System.out.println("Population finale  fit: " + p.getPopulation().get(0).performance());
+        //System.out.println("Population initiale  fit: " + a);
+        System.out.println("Population finale fitness: " + p.getPopulation().get(0).performance());
         System.exit(0);
-        fen.dispose();
-        fen.setVisible(false);
+//        fen.dispose();
+//        fen.setVisible(false);
     }
 
 
