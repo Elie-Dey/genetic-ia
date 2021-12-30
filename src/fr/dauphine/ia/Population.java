@@ -7,14 +7,19 @@ import java.util.Random;
 public class Population {
     private ArrayList<Individu> population;
 
-    public Population(int nbIndividu) {
+    /**
+     *
+     * @param nombreIndividu
+     */
+    public Population(int nombreIndividu) {
         this.population = new ArrayList<Individu>();
-        for (int i = 0; i < nbIndividu; i++)
+        for (int i = 0; i < nombreIndividu; i++)
             this.population.add(new Individu());
     }
 
+
     public Population() {
-        this.population = new ArrayList<Individu>();
+        this.population = new ArrayList<>();
     }
 
     public Individu meilleurIndividu() {
@@ -22,25 +27,35 @@ public class Population {
         return this.population.get(0);
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Individu> getPopulation() {
         return population;
     }
 
+    /**
+     *
+     * @return
+     */
     public Population reproduire() {
         Random randGen = new Random();
         Population enfants = new Population();
 
-        // ellitisme : Les 2 meilleurs sont ajoutes d'office dans la nouvelle generation
+        // Elitism : Les 2 meilleurs sont ajoutés office dans la nouvelle generation
 
         Collections.sort(this.population);
         for (int i=0 ; i<2 ; i++)
             enfants.population.add(this.population.get(i));
-        // croisement : On genere les autres avec des croisements entre les individus
+
+        // Croisement : croisements entre les individus restants
+
         while (enfants.population.size() < this.population.size()) {
             enfants.population.addAll(Individu.croisement(this.population.get(randGen.nextInt(this.population.size())),
                     this.population.get(randGen.nextInt(this.population.size()))));
         }
-        //System.out.println(" -> nbIndiv = " + enfants.population.size());
+
         return enfants;
     }
 }

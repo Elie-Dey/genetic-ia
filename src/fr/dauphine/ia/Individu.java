@@ -164,8 +164,8 @@ public class Individu  implements  Comparable<Individu>, Cloneable{
      */
     @Override
     public String toString() {
-        return "Individu{" +
+        return "Circuit[" +
                 "listeVilles=" + listeVilles +
-                '}';
+                ']';
     }
 }
