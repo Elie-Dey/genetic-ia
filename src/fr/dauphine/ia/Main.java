@@ -6,15 +6,17 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 
 public class Main {
-    public static int getFactorial(int f) {
-        int result = 1;
-        for (int i = 1; i <= f; i++) {
-            result = result * i; // trouver la factorielle du nombre avec des boucles
+    public static int getFactorial(int f) { // trouver la factorielle d'un nombre avec Stream
+        if (f <= 1) {
+            return 1;
         }
-        return result;
+        else {
+            return IntStream.rangeClosed(2, f).reduce((x, y) -> x * y).getAsInt();
+        }
     }
     public static void main(String[] args) {
 
@@ -24,7 +26,7 @@ public class Main {
         System.out.println("Entrer le nombre de ville :");
 
         int nombreDeVille = scanner.nextInt();
-        System.out.println("Entrer le nombre de ville  :" + nombreDeVille);
+       //System.out.println(" le nombre de ville  :" + nombreDeVille);
 
         System.out.println("Le nombre de circuit possible pour " + nombreDeVille + " villes est de " + getFactorial(nombreDeVille));
         System.out.println("Entrer un nombre de circuits pour l'algorithme  :");
@@ -34,8 +36,10 @@ public class Main {
 
         System.out.println("Nombre de générations : " );
         int nombreDeGeneration = scanner.nextInt();
-        System.out.println("Nombre de générations : "   + nombreDeGeneration);
+        //System.out.println("Nombre de générations : "   + nombreDeGeneration);
         scanner.nextLine();
+
+
         //===============Creation fichier villes.txt ====================
         try {
             File myfile = new File("Villes.txt");
@@ -46,10 +50,10 @@ public class Main {
                 System.out.println("Fichier déjà existant...mise à jour des villes");
             }
             for (int i = 0; i < nombreDeVille ; i++) {
-                double x = Math.random();
-                double y = Math.random();
+                double x = Math.random()*10;
+                double y = Math.random()*10;
 
-                writer.write(x +";"+ y + ";" + i + "\n");
+                writer.write(x +";"+ y  + "\n");
             }
             System.out.println("Creation aleatoire de ville");
             writer.close();
@@ -59,7 +63,7 @@ public class Main {
             e.printStackTrace();
         }
         // Lecture des villes
-        Villes.LectureFichier("Villes.txt");
+        Villes.LectureFichier("Villes.txt", nombreDeVille);
         int nombreIndividus = nombreDeCircuit;
 //
 //        JFrame fen = new JFrame("Algo génétique");

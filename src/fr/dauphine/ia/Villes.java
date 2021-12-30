@@ -13,7 +13,7 @@ public class Villes {
     public static double min;
     public static double max;
 
-    public static void LectureFichier(String fichier) {
+    public static void LectureFichier(String fichier, int nombreDeligneDuFichier) {
         coords = new ArrayList<Ville>();
         min = 0;
         max = 0;
@@ -22,11 +22,10 @@ public class Villes {
             InputStreamReader ipsr = new InputStreamReader(ips);
             BufferedReader br = new BufferedReader(ipsr);
             String ligne;
-            Long nombreDeligneDuFichier = br.lines().count();
             while ((ligne = br.readLine()) != null) {
                 nombreDeligneDuFichier--;
                 int distToCut = ligne.indexOf(";");
-                coords.add(new Ville(Double.parseDouble(ligne.substring(0, distToCut)), Double.parseDouble(ligne.substring(distToCut + 1)), Math.toIntExact(nombreDeligneDuFichier)));
+                coords.add(new Ville(Double.parseDouble(ligne.substring(0, distToCut)), Double.parseDouble(ligne.substring(distToCut + 1)),nombreDeligneDuFichier));
                 if (Double.parseDouble(ligne.substring(0,distToCut)) < min)
                     min = Double.parseDouble(ligne.substring(0,distToCut));
                 if (Double.parseDouble(ligne.substring(0,distToCut)) > max)

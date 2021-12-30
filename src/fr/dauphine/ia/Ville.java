@@ -8,16 +8,11 @@ public class Ville {
     public Ville(double coordX, double coordY, int numeroDeVille){
         this.coordX = coordX;
         this.coordY = coordY;
+        this.numeroDeVille = numeroDeVille;
     }
-//    public Ville() {
-//        // construction  avec des coordonnée aleatoire
-//        this.coordX = (int) (Math.random() * 100); // Nombre aléatoire entre 0 et 100
-//        this.coordY= (int) (Math.random() * 100);
-//       // this.numeroDeVille = givenNumeroDeVille; //
-//    }
     @Override
     public String toString() {
-        return "Ville [" + numeroDeVille + "]";
+        return  "[" + numeroDeVille + "]";
     }
 
     public double getCoordX() {
