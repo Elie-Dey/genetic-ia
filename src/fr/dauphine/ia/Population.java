@@ -5,16 +5,16 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Population {
-    private ArrayList<Individu> population;
+    private ArrayList<Individual> population;
 
     /**
      *
-     * @param nombreIndividu
+     * @param numberOfindividuals
      */
-    public Population(int nombreIndividu) {
-        this.population = new ArrayList<Individu>();
-        for (int i = 0; i < nombreIndividu; i++)
-            this.population.add(new Individu());
+    public Population(int numberOfindividuals) {
+        this.population = new ArrayList<>();
+        for (int i = 0; i < numberOfindividuals; i++)
+            this.population.add(new Individual());
     }
 
 
@@ -22,7 +22,7 @@ public class Population {
         this.population = new ArrayList<>();
     }
 
-    public Individu meilleurIndividu() {
+    public Individual bestIndividual() {
         Collections.sort(this.population);
         return this.population.get(0);
     }
@@ -31,7 +31,7 @@ public class Population {
      *
      * @return
      */
-    public ArrayList<Individu> getPopulation() {
+    public ArrayList<Individual> getPopulation() {
         return population;
     }
 
@@ -39,23 +39,23 @@ public class Population {
      *
      * @return
      */
-    public Population reproduire() {
+    public Population reproduce() {
         Random randGen = new Random();
-        Population enfants = new Population();
+        Population children = new Population();
 
         // Elitism : Les 2 meilleurs sont ajoutés office dans la nouvelle generation
 
         Collections.sort(this.population);
         for (int i=0 ; i<2 ; i++)
-            enfants.population.add(this.population.get(i));
+            children.population.add(this.population.get(i));
 
-        // Croisement : croisements entre les individus restants
+        // CrossOver : CrossOvers entre les Individuals restants
 
-        while (enfants.population.size() < this.population.size()) {
-            enfants.population.addAll(Individu.croisement(this.population.get(randGen.nextInt(this.population.size())),
+        while (children.population.size() < this.population.size()) {
+            children.population.addAll(Individual.CrossOver(this.population.get(randGen.nextInt(this.population.size())),
                     this.population.get(randGen.nextInt(this.population.size()))));
         }
 
-        return enfants;
+        return children;
     }
 }

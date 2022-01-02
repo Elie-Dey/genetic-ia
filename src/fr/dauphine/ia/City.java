@@ -1,18 +1,18 @@
 package fr.dauphine.ia;
 
-public class Ville {
+public class City {
     private double coordX;
     private double coordY;
-    private int numeroDeVille;
+    private int numberOfCity;
 
-    public Ville(double coordX, double coordY, int numeroDeVille){
+    public City(double coordX, double coordY, int numberOfCity){
         this.coordX = coordX;
         this.coordY = coordY;
-        this.numeroDeVille = numeroDeVille;
+        this.numberOfCity = numberOfCity;
     }
     @Override
     public String toString() {
-        return  "[" + numeroDeVille + "]";
+        return  "[" + numberOfCity + "]";
     }
 
     public double getCoordX() {
@@ -39,7 +39,7 @@ public class Ville {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Ville other = (Ville) obj;
+        City other = (City) obj;
         if (this.coordX != other.coordX || this.coordY != other.coordY)
             return false;
         return true;
