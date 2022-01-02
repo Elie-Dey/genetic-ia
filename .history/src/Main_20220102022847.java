@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 //package Algo;
@@ -32,40 +31,14 @@ public class Main {
 		// ville 2 n-2
 		// Choisir la ville de depart de l'algo
 
-		ArrayList<City> listCities = new ArrayList<City>();
-		ArrayList<Links> listLinks = new ArrayList<Links>();
-
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the number of city");
 		int numberOfCity = sc.nextInt();
 
 		for (int index = 0; index <= numberOfCity; index++) {
-			City a = new City("Ville numero " + index);
-			listCities.add(a);
+			new City("Ville " + index);
+			System.out.println(new City("Ville " + index));
 		}
-		System.out.println(listCities);
-		int indexCity = 1;
-		while (numberOfCity > 0) {
-			double x = Math.random() * 10;
-			Links link = new Links(listCities.get(0), (int) x, listCities.get(indexCity));
-			listLinks.add(link);
-			numberOfCity--;
-			indexCity++;
-		}
-		indexCity = 2;
-		while (numberOfCity > 2) {
-			double x = Math.random() * 10;
-			Links link = new Links(listCities.get(1), (int) x, listCities.get(indexCity));
-			listLinks.add(link);
-			numberOfCity--;
-			indexCity++;
-		}
-
-		listCities.get(0).print_all_cities();
-
-		System.out.println("\n");
-		// listLinks.get(0).print_all_links();
-		listLinks.get(1).print_all_links();
 
 	}
 

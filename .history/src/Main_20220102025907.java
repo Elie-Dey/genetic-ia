@@ -64,7 +64,7 @@ public class Main {
 		listCities.get(0).print_all_cities();
 
 		System.out.println("\n");
-		// listLinks.get(0).print_all_links();
+		listLinks.get(0).print_all_links();
 		listLinks.get(1).print_all_links();
 
 	}

@@ -52,21 +52,10 @@ public class Main {
 			numberOfCity--;
 			indexCity++;
 		}
-		indexCity = 2;
-		while (numberOfCity > 2) {
-			double x = Math.random() * 10;
-			Links link = new Links(listCities.get(1), (int) x, listCities.get(indexCity));
-			listLinks.add(link);
-			numberOfCity--;
-			indexCity++;
-		}
 
 		listCities.get(0).print_all_cities();
-
 		System.out.println("\n");
-		// listLinks.get(0).print_all_links();
-		listLinks.get(1).print_all_links();
-
+		listLinks.get(0).print_all_links();
 	}
 
 }

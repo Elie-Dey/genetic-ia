@@ -40,33 +40,20 @@ public class Main {
 		int numberOfCity = sc.nextInt();
 
 		for (int index = 0; index <= numberOfCity; index++) {
-			City a = new City("Ville numero " + index);
+			City a = new City("Ville  n° " + index);
 			listCities.add(a);
 		}
 		System.out.println(listCities);
-		int indexCity = 1;
+		int indexCity = 0;
 		while (numberOfCity > 0) {
 			double x = Math.random() * 10;
-			Links link = new Links(listCities.get(0), (int) x, listCities.get(indexCity));
-			listLinks.add(link);
-			numberOfCity--;
-			indexCity++;
-		}
-		indexCity = 2;
-		while (numberOfCity > 2) {
-			double x = Math.random() * 10;
-			Links link = new Links(listCities.get(1), (int) x, listCities.get(indexCity));
-			listLinks.add(link);
+			Links a = new Links(listCities.get(0), (int) x, listCities.get(indexCity));
+			listLinks.add(a);
 			numberOfCity--;
 			indexCity++;
 		}
 
 		listCities.get(0).print_all_cities();
-
-		System.out.println("\n");
-		// listLinks.get(0).print_all_links();
-		listLinks.get(1).print_all_links();
-
 	}
 
 }

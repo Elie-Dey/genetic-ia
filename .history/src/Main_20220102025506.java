@@ -53,7 +53,7 @@ public class Main {
 			indexCity++;
 		}
 		indexCity = 2;
-		while (numberOfCity > 2) {
+		while (numberOfCity > 0) {
 			double x = Math.random() * 10;
 			Links link = new Links(listCities.get(1), (int) x, listCities.get(indexCity));
 			listLinks.add(link);
@@ -64,7 +64,7 @@ public class Main {
 		listCities.get(0).print_all_cities();
 
 		System.out.println("\n");
-		// listLinks.get(0).print_all_links();
+		listLinks.get(0).print_all_links();
 		listLinks.get(1).print_all_links();
 
 	}
