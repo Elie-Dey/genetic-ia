@@ -22,24 +22,21 @@ public class Main {
     public static void main(String[] args) {
 
 
-        System.out.println("INFORMATION ALGORITHME GENETIQUES");
+        System.out.println("GENETIC ALGORITHM INFORMATION");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Entrer le nombre de City :");
+        System.out.println("Enter the number of City :");
 
-        int nombreDeCity = scanner.nextInt();
-       //System.out.println(" le nombre de City  :" + nombreDeCity);
+        int numberOfCity = scanner.nextInt();
+       //System.out.println(" le nombre de City  :" + numberOfCity);
 
-        System.out.println("Le nombre de circuit possible pour " + nombreDeCity + " Cities est de " + getFactorial(nombreDeCity));
-        System.out.println("Entrer un nombre de circuits pour l'algorithme  :");
+        int factorial = getFactorial(numberOfCity);
+        System.out.println("The number of circuits possible for " + numberOfCity + " Cities is " + factorial);
+        System.out.println("Enter a number of circuits for the algorithm: ");
 
-        int nombreDeCircuit = scanner.nextInt();
-        System.out.println("Nombre de circuits : " + nombreDeCircuit);
+        int numberOfCircuits = scanner.nextInt();
 
-       // System.out.println("Nombre de générations : " );
-       // int nombreDeGeneration = scanner.nextInt();
-        //System.out.println("Nombre de générations : "   + nombreDeGeneration);
-       // scanner.nextLine();
-
+        System.out.println(" Number of cities  :" + numberOfCity);
+        System.out.println("Number of circuits : " + numberOfCircuits + " in "+ factorial);
 
         //===============Creation of city file Cities.txt ====================
         try {
@@ -50,7 +47,7 @@ public class Main {
             } else {
                 System.out.println("File already exists ... updating\n");
             }
-            for (int i = 0; i < nombreDeCity ; i++) {
+            for (int i = 0; i < numberOfCity ; i++) {
                 double x = Math.random()*10;
                 double y = Math.random()*10;
 
@@ -63,27 +60,26 @@ public class Main {
             System.out.println("Error");
             e.printStackTrace();
         }
-        // Lecture des Cities
-        Cities.ReadingFile("Cities.txt", nombreDeCity);
-        int numberOfindividualss = nombreDeCircuit;
+        // Reading cities
+        Cities.ReadingFile("Cities.txt", numberOfCity);
+        int numberOfindividualss = numberOfCircuits;
         long startTime = System.currentTimeMillis();
         Population p = new Population(numberOfindividualss);
         double a =  p.getPopulation().get(0).performance();
         System.out.println("Running....");
         int i = 0;
-        while ((System.currentTimeMillis() - startTime) / 1000 < 100) {
+        while ((System.currentTimeMillis() - startTime) / 1000 < 300) {
             i++;
             p = p.reproduce();
         }
 
-        //System.out.println("Solution trouvée à la Génération n° " + i + " : " + p.getPopulation().get(0).performance());
         double b =  p.getPopulation().get(0).performance();
         System.out.println("Performance initiale: " + a+"\n");
         System.out.println("Performance finale: " + b+"\n");
         System.out.println("Individual (Circuit) : " +  p.getPopulation().get(0));
         double taux = -(b*10 - a*10)/(b*10) * 100;
         double roundTaux = Math.round(taux*100)/100;
-        System.out.println("Taux d'evolution par rapport à la fitness de départ : " +  roundTaux + " %");
+        System.out.println("Taux d'evolution par rapport à la performance de départ : " +  roundTaux + " %");
         System.out.println("Temps d'execution : " + ((System.currentTimeMillis()- startTime)/1000)*0.6 + "s");
     }
 
