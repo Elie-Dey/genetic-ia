@@ -1,4 +1,4 @@
-package fr.dauphine.ia;
+package fr.dauphine.Genetic;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -25,11 +25,12 @@ public class Cities {
             while ((line = br.readLine()) != null) {
                 numberOfInstancesInFile--;
                 int distToCut = line.indexOf(";");
-                coords.add(new City(Double.parseDouble(line.substring(0, distToCut)), Double.parseDouble(line.substring(distToCut + 1)),numberOfInstancesInFile));
-                if (Double.parseDouble(line.substring(0,distToCut)) < min)
-                    min = Double.parseDouble(line.substring(0,distToCut));
-                if (Double.parseDouble(line.substring(0,distToCut)) > max)
-                    max = Double.parseDouble(line.substring(0,distToCut));
+                coords.add(new City(Double.parseDouble(line.substring(0, distToCut)),
+                        Double.parseDouble(line.substring(distToCut + 1)), numberOfInstancesInFile));
+                if (Double.parseDouble(line.substring(0, distToCut)) < min)
+                    min = Double.parseDouble(line.substring(0, distToCut));
+                if (Double.parseDouble(line.substring(0, distToCut)) > max)
+                    max = Double.parseDouble(line.substring(0, distToCut));
             }
             System.out.println(coords);
             br.close();
@@ -48,14 +49,15 @@ public class Cities {
     }
 
     public static double distance(City City1, City City2) {
-        return Math.sqrt(Math.pow(City2.getCoordX() - City1.getCoordX(), 2) + Math.pow(City2.getCoordY() - City1.getCoordY(), 2));
+        return Math.sqrt(Math.pow(City2.getCoordX() - City1.getCoordX(), 2)
+                + Math.pow(City2.getCoordY() - City1.getCoordY(), 2));
     }
 
-    public static double getMin(){
+    public static double getMin() {
         return min;
     }
 
-    public static double getMax(){
+    public static double getMax() {
         return max;
     }
 }

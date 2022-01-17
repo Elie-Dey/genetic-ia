@@ -1,18 +1,19 @@
-package fr.dauphine.ia;
+package fr.dauphine.Genetic;
 
 public class City {
     private double coordX;
     private double coordY;
     private int numberOfCity;
 
-    public City(double coordX, double coordY, int numberOfCity){
+    public City(double coordX, double coordY, int numberOfCity) {
         this.coordX = coordX;
         this.coordY = coordY;
         this.numberOfCity = numberOfCity;
     }
+
     @Override
     public String toString() {
-        return  "[" + numberOfCity + "]";
+        return "[" + numberOfCity + "]";
     }
 
     public double getCoordX() {

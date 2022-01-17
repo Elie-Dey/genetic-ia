@@ -1,10 +1,11 @@
-package fr.dauphine.ia;
+package fr.dauphine.Genetic;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class Individual  implements  Comparable<Individual>, Cloneable{
+public class Individual implements Comparable<Individual>, Cloneable {
 
     private List<City> listOfCity;
 
@@ -25,7 +26,7 @@ public class Individual  implements  Comparable<Individual>, Cloneable{
         this.listOfCity.set(0, Cities.getCity(0));
     }
 
-    //FITNESS
+    // FITNESS
     /**
      *
      * @return la fitness d'un circuit
@@ -47,7 +48,7 @@ public class Individual  implements  Comparable<Individual>, Cloneable{
      * @param secondParent
      * @return
      */
-   
+
     public static List<Individual> CrossOver(Individual firstParent, Individual secondParent) {
 
         // generation des deux points de coupe du circuit
@@ -88,7 +89,7 @@ public class Individual  implements  Comparable<Individual>, Cloneable{
                 secondChild.listOfCity.set(secondChild.listOfCity.indexOf(firstBuffer), secondBuffer);
             }
 
-        //MUTATION
+        // MUTATION
 
         if (randGen.nextInt(100) < 50) {
             int point1;
@@ -98,9 +99,9 @@ public class Individual  implements  Comparable<Individual>, Cloneable{
                 point2 = randGen.nextInt(firstParent.listOfCity.size());
             } while (point1 >= point2);
 
-            //On reflete le chemin entre deux points
+            // On reflete le chemin entre deux points
 
-            for (int i=0 ; i<(point2-point1)/2 ; i++) {
+            for (int i = 0; i < (point2 - point1) / 2; i++) {
                 Collections.swap(firstChild.listOfCity, point1 + i, point2 - i);
                 Collections.swap(secondChild.listOfCity, point1 + i, point2 - i);
             }
@@ -112,7 +113,6 @@ public class Individual  implements  Comparable<Individual>, Cloneable{
         children.add(secondChild);
         return children;
     }
-
 
     /**
      *

@@ -1,4 +1,4 @@
-package fr.dauphine.ia;
+package fr.dauphine.Genetic;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +16,6 @@ public class Population {
         for (int i = 0; i < numberOfindividuals; i++)
             this.population.add(new Individual());
     }
-
 
     public Population() {
         this.population = new ArrayList<>();
@@ -46,14 +45,15 @@ public class Population {
         // Elitism : Les 2 meilleurs sont ajoutés office dans la nouvelle generation
 
         Collections.sort(this.population);
-        for (int i=0 ; i<2 ; i++)
+        for (int i = 0; i < 2; i++)
             children.population.add(this.population.get(i));
 
         // CrossOver : CrossOvers entre les Individuals restants
 
         while (children.population.size() < this.population.size()) {
-            children.population.addAll(Individual.CrossOver(this.population.get(randGen.nextInt(this.population.size())),
-                    this.population.get(randGen.nextInt(this.population.size()))));
+            children.population
+                    .addAll(Individual.CrossOver(this.population.get(randGen.nextInt(this.population.size())),
+                            this.population.get(randGen.nextInt(this.population.size()))));
         }
 
         return children;
